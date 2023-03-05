@@ -18,10 +18,9 @@ namespace Graphics
     class SR_API GamePad
     {
     public:
-        static constexpr int MAX_PLAYERS = 4;
+        static constexpr int MAX_PLAYERS = 2;
 
-        static GamePadState getState(int      player,
-            DeadZone deadZoneMode = DeadZone::IndependentAxis);
+        static GamePadState getState(int player, DeadZone deadZoneMode = DeadZone::IndependentAxis);
 
         static bool setVibration(int player, float leftMotor, float rightMotor,
             float leftTrigger = 0.0f, float rightTrigger = 0.0f);

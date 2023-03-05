@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Opponent.h"
 #include "Goal.h"
+#include "GamePad.hpp"
 
 namespace Tmpl8 {
 

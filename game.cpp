@@ -38,6 +38,8 @@ namespace Tmpl8
 	{
 		deltaTime /= 1000.0f;
 
+		Graphics::GamePadState state = Graphics::GamePad::getState(0, Graphics::DeadZone::IndependentAxis);
+
 		ball.Update(deltaTime);
 		player.Update(deltaTime);
 		//player2.Update(deltaTime);
@@ -47,6 +49,7 @@ namespace Tmpl8
 
 		ball.WallCollision();
 		player.Move(ball, 0x41, 0x44, 0x57); // A, D, SPACE
+		player.Controller(ball, state);
 		//player2.Move(ball, VK_LEFT, VK_RIGHT, VK_UP);
 		opponent.Move(ball);
 

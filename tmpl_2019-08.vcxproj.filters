@@ -8,17 +8,37 @@
     <ClCompile Include="template.cpp">
       <Filter>template code</Filter>
     </ClCompile>
-    <ClCompile Include="Moving_Entity.cpp" />
-    <ClCompile Include="Ball.cpp" />
-    <ClCompile Include="Character.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Opponent.cpp" />
-    <ClCompile Include="Circle.cpp" />
-    <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Goal.cpp" />
-    <ClCompile Include="GamepadXInput.cpp" />
-    <ClCompile Include="GamePad.cpp" />
-    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="GamepadXInput.cpp">
+      <Filter>controller code</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePad.cpp">
+      <Filter>controller code</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>controller code</Filter>
+    </ClCompile>
+    <ClCompile Include="Rectangle.cpp">
+      <Filter>shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Circle.cpp">
+      <Filter>shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Moving_Entity.cpp">
+      <Filter>moving entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>moving entities\characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Opponent.cpp">
+      <Filter>moving entities\characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>moving entities\characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Ball.cpp">
+      <Filter>moving entities\ball</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h" />
@@ -28,23 +48,62 @@
     <ClInclude Include="template.h">
       <Filter>template code</Filter>
     </ClInclude>
-    <ClInclude Include="Moving_Entity.h" />
-    <ClInclude Include="Ball.h" />
-    <ClInclude Include="Character.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Opponent.h" />
-    <ClInclude Include="Circle.h" />
-    <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Goal.h" />
-    <ClInclude Include="GamePadState.hpp" />
-    <ClInclude Include="GamePad.hpp" />
-    <ClInclude Include="Timer.hpp" />
-    <ClInclude Include="Config.hpp" />
-    <ClInclude Include="IncludeWin32.hpp" />
+    <ClInclude Include="Config.hpp">
+      <Filter>controller code</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePadState.hpp">
+      <Filter>controller code</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePad.hpp">
+      <Filter>controller code</Filter>
+    </ClInclude>
+    <ClInclude Include="IncludeWin32.hpp">
+      <Filter>controller code</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.hpp">
+      <Filter>controller code</Filter>
+    </ClInclude>
+    <ClInclude Include="Rectangle.h">
+      <Filter>shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Circle.h">
+      <Filter>shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Moving_Entity.h">
+      <Filter>moving entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>moving entities\characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Opponent.h">
+      <Filter>moving entities\characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>moving entities\characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Ball.h">
+      <Filter>moving entities\ball</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="template code">
       <UniqueIdentifier>{bf32dd6e-4be7-4889-8ac6-49e7ee163c40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="controller code">
+      <UniqueIdentifier>{f474fdf0-6f50-420d-a518-cecae00bb8d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shapes">
+      <UniqueIdentifier>{2a4473fd-7bdc-4b6a-860e-0e02d15ee2eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="moving entities">
+      <UniqueIdentifier>{46361ec9-2a66-4e74-94f2-109f2d5f0b21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="moving entities\characters">
+      <UniqueIdentifier>{4dfdeec0-7c51-4f4a-9bc8-a1a2a421d2f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="moving entities\ball">
+      <UniqueIdentifier>{65aacc7f-107e-4c7a-8e19-f3e2e26b9546}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

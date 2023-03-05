@@ -2,6 +2,15 @@
 
 #include <algorithm>
 
+/*******************************************
+         dead-zone discontinuity:
+
+    The change of output values that occurs 
+    when the input signal moves from inside, 
+    to outside the deadzone.
+
+*******************************************/
+
 namespace Graphics
 {
     float ApplyLinearDeadZone(float value, float maxValue, float deadZoneSize = 0.0f) noexcept
