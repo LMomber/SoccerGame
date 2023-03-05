@@ -16,6 +16,9 @@
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Goal.cpp" />
+    <ClCompile Include="GamepadXInput.cpp" />
+    <ClCompile Include="GamePad.cpp" />
+    <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h" />
@@ -33,6 +36,11 @@
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Goal.h" />
+    <ClInclude Include="GamePadState.hpp" />
+    <ClInclude Include="GamePad.hpp" />
+    <ClInclude Include="Timer.hpp" />
+    <ClInclude Include="Config.hpp" />
+    <ClInclude Include="IncludeWin32.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="template code">
