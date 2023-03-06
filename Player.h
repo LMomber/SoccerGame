@@ -11,8 +11,6 @@ class Player : public Character
 public:
 	Player();
 
-	void Move(Ball& ball, int left, int right, int jump);
-
-	void ControllerMove(Ball& ball, float thumbStickL, bool a_Button);
+	void Move(Ball& ball, int left, int right, int jump, Controller& controller, float thumbStickL, bool a_Button);
 };
 

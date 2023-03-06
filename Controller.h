@@ -18,6 +18,8 @@ public:
 
 	void SetVibration(signed int vibration);
 
+	bool IsConnected();
+
 private:
 	Graphics::GamePadState state;
 	unsigned int vibration{ 0 };

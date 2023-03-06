@@ -40,22 +40,25 @@ namespace Tmpl8
 
 		ball.Update(deltaTime);
 		player.Update(deltaTime);
-		//player2.Update(deltaTime);
-		opponent.Update(deltaTime);
+		player2.Update(deltaTime);
+
+		controller1.Update(deltaTime);
+		controller2.Update(deltaTime);
+
 		goal1.Update(ball);
 		goal2.Update(ball);
-		controller1.Update(deltaTime);
 
-		if (player.Collision(ball))
-		{
-			controller1.SetVibration(30);
-		}
+		opponent.Update(deltaTime);
+
+		if (player.Collision(ball)) controller1.SetVibration(30);
+		if (player2.Collision(ball)) controller2.SetVibration(30);
 
 		ball.WallCollision();
-		//player.Move(ball, 0x41, 0x44, 0x57); // A, D, SPACE
-		player.ControllerMove(ball, controller1.GetThumbStickL(), controller1.GetButtonA());
-		//player2.Move(ball, VK_LEFT, VK_RIGHT, VK_UP);
-		opponent.Move(ball);
+
+		player.Move(ball, 0x41, 0x44, 0x57, controller1, controller1.GetThumbStickL(), controller1.GetButtonA()); // A, D, SPACE
+		player2.Move(ball, VK_LEFT, VK_RIGHT, VK_UP, controller2, controller2.GetThumbStickL(), controller2.GetButtonA());
+
+		//opponent.Move(ball);
 
 		screen->Clear(0);
 
@@ -66,8 +69,9 @@ namespace Tmpl8
 		goal2.Draw(screen);
 		ball.Draw(screen);
 		player.Draw(screen);
-		//player2.Draw(screen);
-		opponent.Draw(screen);
+		player2.Draw(screen);
+
+		//opponent.Draw(screen);
 
 		GoalCheck();
 		Scoreboard();

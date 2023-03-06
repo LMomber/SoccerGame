@@ -33,3 +33,8 @@ void Controller::SetVibration(signed int vibration)
 {
     this->vibration = vibration;
 }
+
+bool Controller::IsConnected()
+{
+    return state.connected;
+}

@@ -3,7 +3,7 @@
 Player::Player()
 {}
 
-void Player::Move(Ball& ball, int left, int right, int jump)
+void Player::Move(Ball& ball, int left, int right, int jump, Controller& controller, float thumbStickL, bool a_Button)
 {
 	float velocity_X = 500.0f;
 	float velocity_Y = 3000;
@@ -12,46 +12,39 @@ void Player::Move(Ball& ball, int left, int right, int jump)
 
 	BallCollision(ball);
 
-	//When movement key pressed:
-	if (GetAsyncKeyState(left))
+	if (controller.IsConnected())
 	{
-		velocity = { -velocity_X,velocity.y };
+		if (thumbStickL < 0)
+		{
+			velocity = { -velocity_X,velocity.y };
+		}
+		else if (thumbStickL > 0)
+		{
+			velocity = { velocity_X,velocity.y };
+		}
+		else velocity = { 0,velocity.y };
+
+		if (rectangle.bottomCenter.y == (ScreenHeight - 2) && a_Button)
+		{
+			velocity = { velocity.x,-velocity_Y };
+		}
 	}
-	else if (GetAsyncKeyState(right))
+	else 
 	{
-		velocity = { velocity_X,velocity.y };
-	}
-	else velocity = { 0,velocity.y };
+		//When movement key pressed:
+		if (GetAsyncKeyState(left))
+		{
+			velocity = { -velocity_X,velocity.y };
+		}
+		else if (GetAsyncKeyState(right))
+		{
+			velocity = { velocity_X,velocity.y };
+		}
+		else velocity = { 0,velocity.y };
 
-	if (rectangle.bottomCenter.y == (ScreenHeight - 2) && GetAsyncKeyState(jump) & 1)
-	{
-		velocity = { velocity.x,-velocity_Y };
-	}
-}
-
-void Player::ControllerMove(Ball& ball, float thumbStickL, bool a_Button)
-{
-
-	float velocity_X = 500.0f;
-	float velocity_Y = 3000;
-	signed int vibration = 75;
-
-	WallCollision();
-
-	BallCollision(ball);
-
-	if ( thumbStickL< 0)
-	{
-		velocity = { -velocity_X,velocity.y };
-	}
-	else if (thumbStickL > 0)
-	{
-		velocity = { velocity_X,velocity.y };
-	}
-	else velocity = { 0,velocity.y };
-
-	if (rectangle.bottomCenter.y == (ScreenHeight - 2) && a_Button)
-	{
-		velocity = { velocity.x,-velocity_Y };
+		if (rectangle.bottomCenter.y == (ScreenHeight - 2) && GetAsyncKeyState(jump) & 1)
+		{
+			velocity = { velocity.x,-velocity_Y };
+		}
 	}
 }
