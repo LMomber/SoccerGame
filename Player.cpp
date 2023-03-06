@@ -1,4 +1,5 @@
 #include "Player.h"
+#include <iostream>
 
 Player::Player()
 {}
@@ -42,9 +43,10 @@ void Player::Move(Ball& ball, int left, int right, int jump, Controller& control
 		}
 		else velocity = { 0,velocity.y };
 
-		if (rectangle.bottomCenter.y == (ScreenHeight - 2) && GetAsyncKeyState(jump) & 1)
+		if (GetAsyncKeyState(jump) && (rectangle.bottomCenter.y == (ScreenHeight - 2)))
 		{
 			velocity = { velocity.x,-velocity_Y };
+			std::cout << "jump" << std::endl;
 		}
 	}
 }

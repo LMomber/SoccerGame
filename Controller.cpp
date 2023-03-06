@@ -1,8 +1,5 @@
 #include "Controller.h"
 
-Controller::Controller()
-    : player{ 0 }
-{}
 
 Controller::Controller(int player)
     : player{player}

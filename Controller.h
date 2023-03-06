@@ -6,9 +6,7 @@
 class Controller
 {
 public:
-	Controller();
-
-	Controller(int player);
+	explicit Controller(int player = 0);
 
 	void Update(float deltaTime);
 

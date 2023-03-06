@@ -19,7 +19,7 @@ void Opponent::Move(Ball& ball)
 	int mid_Pos = 500;
 	int keeper_Pos = 800;
 
-	int jump_Distance = AI_x - (rectangle.width/2) - 75;
+	int jump_Distance = AI_x - (rectangle.width/2) - 100;
 	int far_Away = 600;
 
 	int fast_Ball = 1000;
@@ -31,107 +31,108 @@ void Opponent::Move(Ball& ball)
 	WallCollision();
 
 	BallCollision(ball);
+	/*
+	If high ball:
+		If in front of AI:
+			If ball moving forwards:
+				If ball is far away && AI is NOT at mid_distance (or further):
+					Move left
+			Else If ball moves backwards && AI is NOT at keepers_distance (or further):
+				Move right
+			Else If ball X = 0 && AI is NOT at jump_distance (or further):
+				Move left
+			Else
+				Wait
+		If behind AI:
+			If ball moving forwards || ball has X = 0 || (ball moves backwards && AI is NOT at keepers_distance (or further)):
+				Move right
+			Else
+				Wait
 
-	//If high ball:
-		//If in front of AI:
-			//If ball moving forwards:
-				//If ball is far away && AI is NOT at mid_distance (or further):
-					//Move left
-			//Else If ball moves backwards && AI is NOT at keepers_distance (or further):
-				//Move right
-			//Else If ball X = 0 && AI is NOT at jump_distance (or further):
-				//Move left
-			//Else
-				//Wait
-		//If behind AI:
-			//If ball moving forwards || ball has X = 0 || (ball moves backwards && AI is NOT at keepers_distance (or further)):
-				//Move right
-			//Else
-				//Wait
-
-	//If jump ball:
-		//If in front of AI:
-			//If ball moving forwards:
-				//If (ball is far away || (!(ball is far away) && ball is moving mid/fast)):
-					//If AI is at mid_distance (or further):
-						//Wait
-					//Else
-						//Move left
-				//Else If AI is very close to the ball:
-					//Jump to the left
-				//Else
-					//Move left
-			//If ball moves backwards:
-				//If ball is far away:
-					//If AI is at goal (or further):
-						//Wait
-					//Else
-						//Move right
-				//Else
-					//If ball is pretty close to AI (or closer):
-						//Jump to the left
-					//Else
-						//If AI is at mid_distance:
-							//Wait
-						//Else
-							//Move left
-			//If ball X = 0:
-				//If AI is at jump_distance (or further):
-					//Jump to the left
-				//Else
-					//Move left
-		//If behind AI:
-			//Move right
+	If jump ball:
+		If in front of AI:
+			If ball moving forwards:
+				If (ball is far away || (!(ball is far away) && ball is moving mid/fast)):
+					If AI is at mid_distance (or further):
+						Wait
+					Else
+						Move left
+				Else If AI is very close to the ball:
+					Jump to the left
+				Else
+					Move left
+			If ball moves backwards:
+				If ball is far away:
+					If AI is at goal (or further):
+						Wait
+					Else
+						Move right
+				Else
+					If ball is pretty close to AI (or closer):
+						Jump to the left
+					Else
+						If AI is at mid_distance:
+							Wait
+						Else
+							Move left
+			If ball X = 0:
+				If AI is at jump_distance (or further):
+					Jump to the left
+				Else
+					Move left
+		If behind AI:
+			Move right
 	
-	//If low ball:
-		//If in front of AI:
-			//If ball is moving forward:
-				//If ball is far away && AI is at mid_distane (or further):
-					//Wait
-				//Else
-					//Move left
-			//If ball moves backwards:
-				//If the ball is far away:
-					//Move right
-				//Else If the ball is very close:
-					//Move left
-				//Else
-					//Wait
-			//If ball X = 0:
-				//If AI is at mid_distance (or further):
-					//Wait
-				//Else
-					//Move left
-		//If behind AI:
-			//If ball is moving forwards:
-				//If ball is far away:
-					//Move right
-				//Else If ball is pretty close:
-					//If ball is at head height:
-						//If the ball moves up:
-							//Wait
-						//Else
-							//Move left
-					//Else
-						//Move left
-				//Else
-					//Move Right
-			//If ball moves backwards:
-				//If AI is very close to the ball:
-					//Wait
-				//Else
-					//Move right
-			//If ball X = 0:
-				//If ball moves slower than AI:
-					//If the AI is very near the ball:
-						//If the ball is higher than the AI:
-							//Move right
-						//Else
-							//Wait
-					//Else
-						//Move right
-				//Else 
-					//Move right
+	If low ball:
+		If in front of AI:
+			If ball is moving forward:
+				If ball is far away && AI is at mid_distane (or further):
+					Wait
+				Else
+					Move left
+			If ball moves backwards:
+				If the ball is far away:
+					Move right
+				Else If the ball is very close:
+					Move left
+				Else
+					Wait
+			If ball X = 0:
+				If AI is at mid_distance (or further):
+					Wait
+				Else
+					Move left
+		If behind AI:
+			If ball is moving forwards:
+				If ball is far away:
+					Move right
+				Else If ball is pretty close:
+					If ball is at head height:
+						If the ball moves up:
+							Wait
+						Else
+							Move left
+					Else
+						Move left
+				Else
+					Move Right
+			If ball moves backwards:
+				If AI is very close to the ball:
+					Wait
+				Else
+					Move right
+			If ball X = 0:
+				If ball moves slower than AI:
+					If the AI is very near the ball:
+						If the ball is higher than the AI:
+							Move right
+						Else
+							Wait
+					Else
+						Move right
+				Else 
+					Move right
+	*/
 
 	//HIGH BALL
 	if (ball.GetPosition().y < high_Ball)
