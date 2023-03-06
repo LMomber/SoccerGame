@@ -1,6 +1,7 @@
 #include "game.h"
 #include "surface.h"
 #include <cstdio> //printf
+#include <iostream>
 
 namespace Tmpl8
 {
@@ -40,7 +41,7 @@ namespace Tmpl8
 
 		ball.Update(deltaTime);
 		player.Update(deltaTime);
-		player2.Update(deltaTime);
+		//player2.Update(deltaTime);
 
 		controller1.Update(deltaTime);
 		controller2.Update(deltaTime);
@@ -51,32 +52,32 @@ namespace Tmpl8
 		opponent.Update(deltaTime);
 
 		if (player.Collision(ball)) controller1.SetVibration(30);
-		if (player2.Collision(ball)) controller2.SetVibration(30);
+		//if (player2.Collision(ball)) controller2.SetVibration(30);
 
 		ball.WallCollision();
 
 		player.Move(ball, 0x41, 0x44, 0x57, controller1, controller1.GetThumbStickL(), controller1.GetButtonA()); // A, D, SPACE
-		player2.Move(ball, VK_LEFT, VK_RIGHT, VK_UP, controller2, controller2.GetThumbStickL(), controller2.GetButtonA());
+		//player2.Move(ball, VK_LEFT, VK_RIGHT, VK_UP, controller2, controller2.GetThumbStickL(), controller2.GetButtonA());
 
-		//opponent.Move(ball);
+		opponent.Move(ball);
 
 		screen->Clear(0);
 
 		screen->Line(0, 200, ScreenWidth, 200, 0x00ff00);
 		screen->Line(0, 350, ScreenWidth, 350, 0x00ff00); // or 330
 
-		screen->Line(100, 0, 100, ScreenHeight, 0x00ff00);								//goal 1
+		/*screen->Line(100, 0, 100, ScreenHeight, 0x00ff00);								//goal 1
 		screen->Line(ScreenWidth - 100, 0, ScreenWidth - 100, ScreenHeight, 0x00ff00);	//goal 2
 		screen->Line(500, 0, 500, ScreenHeight, 0x00ff00);								//mid_distance
-		screen->Line(800, 0, 800, ScreenHeight, 0x00ff00);								//keepers_distance
+		screen->Line(800, 0, 800, ScreenHeight, 0x00ff00);								//keepers_distance */
 
 		goal1.Draw(screen);
 		goal2.Draw(screen);
 		ball.Draw(screen);
 		player.Draw(screen);
-		player2.Draw(screen);
+		//player2.Draw(screen);
 
-		//opponent.Draw(screen);
+		opponent.Draw(screen);
 
 		GoalCheck();
 		Scoreboard();

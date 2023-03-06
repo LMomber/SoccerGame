@@ -1,4 +1,22 @@
 ﻿  Opponent.cpp
-C:\Projects\Intake\Opponent.cpp(22,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Projects\Intake\Opponent.cpp(23,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Projects\Intake\Opponent.cpp(12,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Projects\Intake\Opponent.cpp(13,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Projects\Intake\Opponent.cpp(29,29): warning C4244: 'initializing': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Projects\Intake\Opponent.cpp(146,24): warning C4018: '>=': signed/unsigned mismatch
+C:\Projects\Intake\Opponent.cpp(157,59): warning C4018: '>': signed/unsigned mismatch
+C:\Projects\Intake\Opponent.cpp(187,24): warning C4018: '>=': signed/unsigned mismatch
+C:\Projects\Intake\Opponent.cpp(187,57): warning C4018: '>=': signed/unsigned mismatch
+C:\Projects\Intake\Opponent.cpp(197,28): warning C4018: '<=': signed/unsigned mismatch
+C:\Projects\Intake\Opponent.cpp(213,23): warning C4018: '>=': signed/unsigned mismatch
+C:\Projects\Intake\Opponent.cpp(225,24): warning C4018: '<=': signed/unsigned mismatch
+C:\Projects\Intake\Opponent.cpp(250,23): warning C4018: '<=': signed/unsigned mismatch
+C:\Projects\Intake\Opponent.cpp(281,24): warning C4018: '>=': signed/unsigned mismatch
+C:\Projects\Intake\Opponent.cpp(292,23): warning C4018: '>=': signed/unsigned mismatch
+C:\Projects\Intake\Opponent.cpp(297,28): warning C4018: '<=': signed/unsigned mismatch
+C:\Projects\Intake\Opponent.cpp(323,23): warning C4018: '>=': signed/unsigned mismatch
+C:\Projects\Intake\Opponent.cpp(328,28): warning C4018: '<=': signed/unsigned mismatch
+C:\Projects\Intake\Opponent.cpp(348,23): warning C4018: '<=': signed/unsigned mismatch
+C:\Projects\Intake\Opponent.cpp(362,24): warning C4018: '<=': signed/unsigned mismatch
+  game.cpp
+  Generating Code...
   tmpl_2019-08.vcxproj -> C:\Projects\Intake\Intake_x64_debug.exe

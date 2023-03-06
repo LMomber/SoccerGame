@@ -9,6 +9,9 @@ void Opponent::Move(Ball& ball)
 	float velocity_X = 500.0f;
 	float velocity_Y = 3000;
 
+	int AI_x = rectangle.bottomCenter.x;
+	int AI_y = rectangle.bottomCenter.y;
+
 	int high_Ball = 200;
 	int low_Ball = 350;
 
@@ -16,11 +19,14 @@ void Opponent::Move(Ball& ball)
 	int mid_Pos = 500;
 	int keeper_Pos = 800;
 
-	int jump_Distance = 50;
+	int jump_Distance = AI_x - (rectangle.width/2) - 75;
 	int far_Away = 600;
 
-	int AI_x = rectangle.bottomCenter.x;
-	int AI_y = rectangle.bottomCenter.y;
+	int fast_Ball = 1000;
+	int mid_Ball = 400;
+	int slow_Ball = 300;
+
+	unsigned int ball_Distance = (AI_x > ball.GetPosition().x) ? AI_x - ball.GetPosition().x : ball.GetPosition().x - AI_x;
 
 	WallCollision();
 
@@ -130,113 +136,242 @@ void Opponent::Move(Ball& ball)
 	//HIGH BALL
 	if (ball.GetPosition().y < high_Ball)
 	{
-		//Moving forwards
-		if (ball.GetVelocity().x < 0)
+		//Ball in front of AI
+		if (ball.GetPosition().x < AI_x)
 		{
+			//Ball moving forward
+			if (ball.GetVelocity().x < 0)
+			{
+				//Ball is far away && AI is NOT at mid_Pos or further
+				if ((ball_Distance >= far_Away) && (AI_x >= mid_Pos))
+				{
+					velocity = { -velocity_X,velocity.y }; //Move left
+				}
+			}
+			//Ball moving backwards && AI is NOT at keeper_Pos or further
+			else if ((ball.GetVelocity().x > 0) && (AI_x < keeper_Pos))
+			{
+				velocity = { velocity_X,velocity.y }; //Move right
+			}
+			//Ball X = 0 && AI is NOT at jump_Distance
+			else if ((ball.GetVelocity().x == 0) && (ball_Distance > jump_Distance))
+			{
+				velocity = { -velocity_X,velocity.y }; //Move left
+			}
+			else velocity = { 0,velocity.y }; //Wait
+		}
 
+		//Ball behind AI
+		if (ball.GetPosition().x > AI_x)
+		{
+			//ball moving forward || ball X = 0 || (ball moves backwards && AI is NOT at keeper_Pos or further)
+			if ((ball.GetVelocity().x < 0) || (ball.GetVelocity().x == 0) || (ball.GetVelocity().x > 0) && (AI_x < keeper_Pos))
+			{
+				velocity = { velocity_X,velocity.y }; //Move right
+			}
+			else velocity = { 0,velocity.y }; //Wait
 		}
 	}
+
+
 	//JUMP BALL
 	else if ((ball.GetPosition().y >= high_Ball) && (ball.GetPosition().y <= low_Ball))
 	{
+		//Ball in front of AI
+		if (ball.GetPosition().x < AI_x)
+		{
+			//Ball moving forward
+			if (ball.GetVelocity().x < 0)
+			{
+				//If (ball is far away || (!(ball is far away) && ball is moving mid/fast))
+				if ((ball_Distance >= far_Away) || (!(ball_Distance >= far_Away) && ball.GetVelocity().x >= mid_Ball))
+				{
+					//If AI is at mid_distance or further
+					if (AI_x <= mid_Pos)
+					{
+						velocity = { 0,velocity.y }; //Wait
+					}
+					else velocity = { -velocity_X,velocity.y }; //Move left
+				}
+				//If AI is very close to the ball
+				else if (ball_Distance <= jump_Distance)
+				{
+					//Jump to the left
+					velocity = { -velocity_X,velocity.y };
+					if (rectangle.bottomCenter.y == (ScreenHeight - 2))
+					{
+						velocity = { velocity.x,-velocity_Y };
+					}
+				}
+				else velocity = { -velocity_X,velocity.y }; //Move left
+			}
 
+			//Ball moving backwards
+			if (ball.GetVelocity().x > 0)
+			{
+				//If ball is far away
+				if (ball_Distance >= far_Away)
+				{
+					//If AI is at goal or further
+					if (AI_x >= goal_Pos)
+					{
+						velocity = { 0,velocity.y }; //Wait
+					}
+					else velocity = { velocity_X,velocity.y }; //Move right
+				}
+				else
+				{
+					//If ball is pretty close to AI or closer
+					if (ball_Distance <= (jump_Distance + 50))
+					{ 
+						//Jump to the left
+						velocity = { -velocity_X,velocity.y };
+						if (rectangle.bottomCenter.y == (ScreenHeight - 2))
+						{
+							velocity = { velocity.x,-velocity_Y };
+						}
+					}
+					else
+					{
+						//If AI is at mid_distance or further
+						if (AI_x <= mid_Pos)
+						{
+							velocity = { 0,velocity.y }; //Wait
+						}
+						else velocity = { -velocity_X,velocity.y }; //Move left
+					}
+				}
+			}
+
+			//If ball X = 0
+			if (ball.GetVelocity().x == 0)
+			{
+				//If AI is at jump_Distance or further
+				if (ball_Distance <= jump_Distance)
+				{
+					//Jump to the left
+					velocity = { -velocity_X,velocity.y };
+					if (rectangle.bottomCenter.y == (ScreenHeight - 2))
+					{
+						velocity = { velocity.x,-velocity_Y };
+					}
+				}
+				else velocity = { -velocity_X,velocity.y }; //Move left
+			}
+		}
+
+		//If behind AI:
+		if (ball.GetPosition().x > AI_x)
+		{
+			velocity = { velocity_X,velocity.y }; //Move right
+		}
 	}
+
+
 	//LOW BALL
 	else if (ball.GetPosition().y >= low_Ball)
 	{
-
-	}
-
-	//BALL IS HIGH:
-	if (ball.GetPosition().y < high_Ball)
-	{
-		if ((ball.GetPosition().x < AI_x - jump_Distance) && ball.GetVelocity().x < 0) //If AI is behind the ball & the ball is going forward:
+		//Ball in front of AI
+		if (ball.GetPosition().x < AI_x)
 		{
-			if ((AI_x - ball.GetPosition().x) > 300) //If distance between AI and ball is bigger than 300:
+			//Ball moving forward
+			if (ball.GetVelocity().x < 0)
 			{
-				velocity = { 0, velocity.y }; //Stand still.
+				//If ball is far away && AI is at mid_Pos or further
+				if ((ball_Distance >= far_Away) && (AI_x <= mid_Pos))
+				{
+					velocity = { 0,velocity.y }; //Wait
+				}
+				else velocity = { -velocity_X,velocity.y }; //Move left
 			}
-			else velocity = { -velocity_X,velocity.y }; //Move left.
-		}
 
-		/*if ((ball.GetPosition().x < AI_x + distance_Behind_Ball) && ball.GetVelocity().x > 0) //If AI is behind the ball & the ball is going backwards:
-		{
-			if ((AI_x - ball.GetPosition().x) < 300) //If distance between AI and ball is bigger than 300:
+			//Ball moving backwards
+			if (ball.GetVelocity().x > 0)
 			{
-				velocity = { 0, velocity.y }; //Stand still.
+				//If ball is far away
+				if (ball_Distance >= far_Away)
+				{
+					velocity = { velocity_X,velocity.y }; //Move right
+				}
+				//If the ball is very close
+				else if (ball_Distance <= jump_Distance)
+				{
+					velocity = { -velocity_X,velocity.y }; //Move left
+				}
+				else velocity = { 0,velocity.y }; //Wait
 			}
-			else velocity = { velocity_X,velocity.y }; //Move right.
-		}
 
-		if ((ball.GetPosition().x > AI_x + distance_Behind_Ball) && ball.GetVelocity().x < 0) //If AI is in front of the ball & the ball is going forward:
-		{
-			if ((ball.GetPosition().x - AI_x) > 100) //If distance between AI and ball is bigger than 100:
+			//If ball X = 0
+			if (ball.GetVelocity().x == 0)
 			{
-				velocity = { velocity_X,velocity.y }; //Move right.
+				//If AI is at mid_Pos or further
+				if (AI_x <= mid_Pos)
+				{
+					velocity = { 0,velocity.y }; //Wait
+				}
+				else velocity = { -velocity_X,velocity.y }; //Move left
 			}
-			else velocity = { 0, velocity.y }; //Stand still.
 		}
 
-		if ((ball.GetPosition().x > AI_x + distance_Behind_Ball) && ball.GetVelocity().x > 0) //If AI is in front of the ball & the ball is going backwards:
+		//If behind AI:
+		if (ball.GetPosition().x > AI_x)
 		{
-			velocity = { velocity_X,velocity.y }; //Move right.
-		}
-	}
-
-	//ON JUMP HEIGHT
-	if ((ball.GetPosition().y >= height_Until_Jump) && (ball.GetPosition().y <= low_Ball)) //If ball is on jump height:
-	{
-		if ((ball.GetPosition().x < AI_x + distance_Behind_Ball) && ball.GetVelocity().x < 0) //If AI is behind the ball & the ball is going forward:
-		{
-			if ((AI_x - ball.GetPosition().x) > 300) //If distance between AI and ball is bigger than 300:
+			//Ball moving forward
+			if (ball.GetVelocity().x < 0)
 			{
-				velocity = { 0, velocity.y }; //Stand still.
+				//If ball is far away
+				if (ball_Distance >= far_Away)
+				{
+					velocity = { velocity_X,velocity.y }; //Move right
+				}
+				//If ball is pretty close to AI or closer
+				else if (ball_Distance <= (jump_Distance + 50))
+				{
+					//If Ball is at head height
+					if (ball.GetPosition().y <= 425)
+					{
+						if (ball.GetVelocity().y < 0)
+						{
+							velocity = { 0,velocity.y }; //Wait
+						}
+						else velocity = { -velocity_X,velocity.y }; //Move left
+					}
+					else velocity = { -velocity_X,velocity.y }; //Move left
+				}
+				else velocity = { velocity_X,velocity.y }; //Move right
 			}
-			else velocity = { -velocity_X,velocity.y }; //Move left.
-		}
 
-		if ((ball.GetPosition().x < AI_x + distance_Behind_Ball) && ball.GetVelocity().x > 0) //If AI is behind the ball & the ball is going backwards:
-		{
-			if ((AI_x - ball.GetPosition().x) < 300) //If distance between AI and ball is bigger than 300:
+			//Ball moving backwards
+			if (ball.GetVelocity().x > 0)
 			{
-				velocity = { 0, velocity.y }; //Stand still.
+				//If the ball is very close
+				if (ball_Distance <= jump_Distance)
+				{
+					velocity = { 0,velocity.y }; //Wait
+				}
+				else velocity = { velocity_X,velocity.y }; //Move right
 			}
-			else velocity = { velocity_X,velocity.y }; //Move right.
-		}
 
-		if ((ball.GetPosition().x > AI_x + distance_Behind_Ball) && ball.GetVelocity().x < 0) //If AI is in front of the ball & the ball is going forward:
-		{
-			if ((ball.GetPosition().x - AI_x) > 100) //If distance between AI and ball is bigger than 100:
+			//If ball X = 0
+			if (ball.GetVelocity().x == 0)
 			{
-				velocity = { velocity_X,velocity.y }; //Move right.
+				//If ball is slower than AI
+				if (ball.GetVelocity().x <= slow_Ball)
+				{
+					//If the ball is very close
+					if (ball_Distance <= jump_Distance)
+					{
+						//If Ball is higher than the AI
+						if (ball.GetPosition().y < (ScreenHeight - 85))
+						{
+							velocity = { velocity_X,velocity.y }; //Move right
+						}
+						else velocity = { 0,velocity.y }; //Wait
+					}
+					else velocity = { velocity_X,velocity.y }; //Move right
+				}
+				else velocity = { velocity_X,velocity.y }; //Move right
 			}
-			else velocity = { 0, velocity.y }; //Stand still.
 		}
-
-		if ((ball.GetPosition().x > AI_x + distance_Behind_Ball) && ball.GetVelocity().x > 0) //If AI is in front of the ball & the ball is going backwards:
-		{
-			velocity = { velocity_X,velocity.y }; //Move right.
-		}
-	}
-
-	//BALL IS LOW
-
-	if (ball.GetPosition().x < AI_x)
-	{
-		velocity = { -velocity_X,velocity.y }; //LEFT
-
-		if (AI_y == (ScreenHeight - 2) && (ball.GetPosition().y > 300 && ball.GetPosition().y < 350))
-		{
-			velocity = { velocity.x,-velocity_Y };
-		}
-	}
-	else if (ball.GetPosition().x > AI_x && ball.GetVelocity().x > 0)
-	{
-		velocity = { velocity_X,velocity.y }; //RIGHT
-	}
-	else
-	{
-		velocity = { 0,velocity.y }; // Dont move x position
-	}*/
 	}
 }
