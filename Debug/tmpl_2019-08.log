@@ -1,2 +1,4 @@
-﻿  game.cpp
+﻿  Opponent.cpp
+C:\Projects\Intake\Opponent.cpp(22,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Projects\Intake\Opponent.cpp(23,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   tmpl_2019-08.vcxproj -> C:\Projects\Intake\Intake_x64_debug.exe

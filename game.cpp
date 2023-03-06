@@ -63,7 +63,12 @@ namespace Tmpl8
 		screen->Clear(0);
 
 		screen->Line(0, 200, ScreenWidth, 200, 0x00ff00);
-		screen->Line(0, 350, ScreenWidth, 350, 0x00ff00);
+		screen->Line(0, 350, ScreenWidth, 350, 0x00ff00); // or 330
+
+		screen->Line(100, 0, 100, ScreenHeight, 0x00ff00);								//goal 1
+		screen->Line(ScreenWidth - 100, 0, ScreenWidth - 100, ScreenHeight, 0x00ff00);	//goal 2
+		screen->Line(500, 0, 500, ScreenHeight, 0x00ff00);								//mid_distance
+		screen->Line(800, 0, 800, ScreenHeight, 0x00ff00);								//keepers_distance
 
 		goal1.Draw(screen);
 		goal2.Draw(screen);

@@ -9,10 +9,15 @@ void Opponent::Move(Ball& ball)
 	float velocity_X = 500.0f;
 	float velocity_Y = 3000;
 
-	int distance_Behind_Ball = 50;
-
 	int high_Ball = 200;
-	int low_Ball = 250;
+	int low_Ball = 350;
+
+	int goal_Pos = ScreenWidth - 100;
+	int mid_Pos = 500;
+	int keeper_Pos = 800;
+
+	int jump_Distance = 50;
+	int far_Away = 600;
 
 	int AI_x = rectangle.bottomCenter.x;
 	int AI_y = rectangle.bottomCenter.y;
@@ -57,7 +62,13 @@ void Opponent::Move(Ball& ball)
 					//Else
 						//Move right
 				//Else
-					//Jump to the left
+					//If ball is pretty close to AI (or closer):
+						//Jump to the left
+					//Else
+						//If AI is at mid_distance:
+							//Wait
+						//Else
+							//Move left
 			//If ball X = 0:
 				//If AI is at jump_distance (or further):
 					//Jump to the left
@@ -89,7 +100,7 @@ void Opponent::Move(Ball& ball)
 			//If ball is moving forwards:
 				//If ball is far away:
 					//Move right
-				//Else If ball is very close:
+				//Else If ball is pretty close:
 					//If ball is at head height:
 						//If the ball moves up:
 							//Wait
@@ -100,7 +111,7 @@ void Opponent::Move(Ball& ball)
 				//Else
 					//Move Right
 			//If ball moves backwards:
-				//If AI is just in front of ball:
+				//If AI is very close to the ball:
 					//Wait
 				//Else
 					//Move right
@@ -116,11 +127,30 @@ void Opponent::Move(Ball& ball)
 				//Else 
 					//Move right
 
+	//HIGH BALL
+	if (ball.GetPosition().y < high_Ball)
+	{
+		//Moving forwards
+		if (ball.GetVelocity().x < 0)
+		{
+
+		}
+	}
+	//JUMP BALL
+	else if ((ball.GetPosition().y >= high_Ball) && (ball.GetPosition().y <= low_Ball))
+	{
+
+	}
+	//LOW BALL
+	else if (ball.GetPosition().y >= low_Ball)
+	{
+
+	}
 
 	//BALL IS HIGH:
 	if (ball.GetPosition().y < high_Ball)
 	{
-		if ((ball.GetPosition().x < AI_x - distance_Behind_Ball) && ball.GetVelocity().x < 0) //If AI is behind the ball & the ball is going forward:
+		if ((ball.GetPosition().x < AI_x - jump_Distance) && ball.GetVelocity().x < 0) //If AI is behind the ball & the ball is going forward:
 		{
 			if ((AI_x - ball.GetPosition().x) > 300) //If distance between AI and ball is bigger than 300:
 			{
