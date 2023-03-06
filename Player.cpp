@@ -29,27 +29,28 @@ void Player::Move(Ball& ball, int left, int right, int jump)
 	}
 }
 
-void Player::Controller(Ball& ball, Graphics::GamePadState& state)
+void Player::ControllerMove(Ball& ball, float thumbStickL, bool a_Button)
 {
 
 	float velocity_X = 500.0f;
 	float velocity_Y = 3000;
+	signed int vibration = 75;
 
 	WallCollision();
 
 	BallCollision(ball);
 
-	if (state.thumbSticks.leftX < 0)
+	if ( thumbStickL< 0)
 	{
 		velocity = { -velocity_X,velocity.y };
 	}
-	else if (state.thumbSticks.leftX > 0)
+	else if (thumbStickL > 0)
 	{
 		velocity = { velocity_X,velocity.y };
 	}
 	else velocity = { 0,velocity.y };
 
-	if (rectangle.bottomCenter.y == (ScreenHeight - 2) && state.buttons.a)
+	if (rectangle.bottomCenter.y == (ScreenHeight - 2) && a_Button)
 	{
 		velocity = { velocity.x,-velocity_Y };
 	}

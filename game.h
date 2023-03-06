@@ -4,7 +4,7 @@
 #include "Player.h"
 #include "Opponent.h"
 #include "Goal.h"
-#include "GamePad.hpp"
+#include "Controller.h"
 
 namespace Tmpl8 {
 
@@ -30,6 +30,9 @@ namespace Tmpl8 {
 
 		Player player;
 		Player player2;
+
+		Controller controller1{ 0 };
+		Controller controller2{ 1 };
 
 		Opponent opponent;
 

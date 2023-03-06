@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Character.h"
-#include "GamePad.hpp"
+#include "Controller.h"
 
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
@@ -13,6 +13,6 @@ public:
 
 	void Move(Ball& ball, int left, int right, int jump);
 
-	void Controller(Ball& ball, Graphics::GamePadState& state);
+	void ControllerMove(Ball& ball, float thumbStickL, bool a_Button);
 };
 

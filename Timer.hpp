@@ -1,12 +1,10 @@
 #pragma once
 
-#include "Config.hpp"
-
 #include <chrono>
 
 namespace Graphics
 {
-    class SR_API Timer
+    class Timer
     {
     public:
         Timer() noexcept;

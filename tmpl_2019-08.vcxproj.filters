@@ -39,6 +39,9 @@
     <ClCompile Include="Ball.cpp">
       <Filter>moving entities\ball</Filter>
     </ClCompile>
+    <ClCompile Include="Controller.cpp">
+      <Filter>controller code</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h" />
@@ -49,9 +52,6 @@
       <Filter>template code</Filter>
     </ClInclude>
     <ClInclude Include="Goal.h" />
-    <ClInclude Include="Config.hpp">
-      <Filter>controller code</Filter>
-    </ClInclude>
     <ClInclude Include="GamePadState.hpp">
       <Filter>controller code</Filter>
     </ClInclude>
@@ -84,6 +84,9 @@
     </ClInclude>
     <ClInclude Include="Ball.h">
       <Filter>moving entities\ball</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller.h">
+      <Filter>controller code</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

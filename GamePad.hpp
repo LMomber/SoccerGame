@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Config.hpp"
 #include "GamePadState.hpp"
 
 namespace Graphics
@@ -15,15 +14,15 @@ namespace Graphics
         None,
     };
 
-    class SR_API GamePad
+    class GamePad
     {
     public:
         static constexpr int MAX_PLAYERS = 2;
 
         static GamePadState getState(int player, DeadZone deadZoneMode = DeadZone::IndependentAxis);
 
-        static bool setVibration(int player, float leftMotor, float rightMotor,
-            float leftTrigger = 0.0f, float rightTrigger = 0.0f);
+        static bool setVibration(int player, float leftMotor, float rightMotor/*,
+            float leftTrigger = 0.0f, float rightTrigger = 0.0f*/);
 
         // Static class, delete constructors and assignment operators.
         GamePad() = delete;

@@ -101,22 +101,22 @@ GamePadState GamePad::getState(int player, DeadZone deadZoneMode)
     state.triggers.right = ApplyLinearDeadZone(xState.Gamepad.bRightTrigger, 255.0f, deadzoneSize);
 
     ApplyStickDeadZone(xState.Gamepad.sThumbLX, xState.Gamepad.sThumbLY, deadZoneMode, 32767.0f,
-        XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE, state.thumbSticks.leftX, state.thumbSticks.leftY);
+        XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE + 10000, state.thumbSticks.leftX, state.thumbSticks.leftY);
     ApplyStickDeadZone(xState.Gamepad.sThumbRX, xState.Gamepad.sThumbRY, deadZoneMode, 32767.0f,
         XINPUT_GAMEPAD_RIGHT_THUMB_DEADZONE, state.thumbSticks.rightX, state.thumbSticks.rightY);
 
     return state;
 }
 
-bool GamePad::setVibration(int player, float leftMotor, float rightMotor, float /*leftTrigger*/,
-    float /*rightTrigger*/)
+bool GamePad::setVibration(int player, float leftMotor, float rightMotor/*, float leftTrigger,
+    float rightTrigger*/)
 {
     if (!ShouldPoll(player))
     {
         return false;
     }
 
-    XINPUT_VIBRATION vibration;
+    XINPUT_VIBRATION vibration; //65535 = %100
     vibration.wLeftMotorSpeed = static_cast<WORD>(leftMotor * 65535.0f);
     vibration.wRightMotorSpeed = static_cast<WORD>(rightMotor * 65535.0f);
 
