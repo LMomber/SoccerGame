@@ -59,7 +59,7 @@ namespace Tmpl8
 		player.Move(ball, 0x41, 0x44, 0x57, controller1, controller1.GetThumbStickL(), controller1.GetButtonA()); // A, D, SPACE
 		//player2.Move(ball, VK_LEFT, VK_RIGHT, VK_UP, controller2, controller2.GetThumbStickL(), controller2.GetButtonA()); ///P2
 
-		opponent.Move(ball); ///OPPONENT
+		opponent.Move(); ///OPPONENT
 
 		screen->Clear(0);
 

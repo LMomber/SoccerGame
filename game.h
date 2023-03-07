@@ -34,7 +34,7 @@ namespace Tmpl8 {
 		Controller controller1{ 0 };
 		Controller controller2{ 1 };
 
-		Opponent opponent;
+		Opponent opponent{ ball };
 
 		Goal goal1{ 1 };
 		Goal goal2{ 2 };

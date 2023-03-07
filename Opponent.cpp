@@ -1,19 +1,45 @@
 #include "Opponent.h"
+#include <iostream>
 
-Opponent::Opponent()
+Opponent::Opponent(Ball& ball)
+	: ball{ ball }
+{}
+
+void Opponent::Update(float deltaTime)
 {
+	float maxVelocity_Y = 1500.0f;
+
+	velocity += gravity;
+	rectangle.bottomCenter += velocity * deltaTime;
+
+	if (velocity.y <= -maxVelocity_Y)
+	{
+		velocity.y = -maxVelocity_Y;
+	}
+
+	if (IsHigh())
+	{
+		std::cout << "HIGH" << std::endl;
+	}
+
+	if (IsJumpHeight())
+	{
+		std::cout << "MID" << std::endl;
+	}
+
+	if (IsLow())
+	{
+		std::cout << "LOW" << std::endl;
+	}
 }
 
-void Opponent::Move(Ball& ball)
+void Opponent::Move()
 {
 	float velocity_X = 500.0f;
 	float velocity_Y = 3000;
 
 	int AI_x = rectangle.bottomCenter.x;
 	int AI_y = rectangle.bottomCenter.y;
-
-	int high_Ball = 200;
-	int low_Ball = 350;
 
 	int goal_Pos = ScreenWidth - 100;
 	int mid_Pos = 500;
@@ -134,11 +160,11 @@ void Opponent::Move(Ball& ball)
 					Move right
 	*/
 
-	//HIGH BALL
-	if (ball.GetPosition().y < high_Ball)
+	//*
+	if (IsHigh())
 	{
 		//Ball in front of AI
-		if (ball.GetPosition().x < AI_x)
+		if (InFront())
 		{
 			//Ball moving forward
 			if (ball.GetVelocity().x < 0)
@@ -163,7 +189,7 @@ void Opponent::Move(Ball& ball)
 		}
 
 		//Ball behind AI
-		if (ball.GetPosition().x > AI_x)
+		if (!InFront())
 		{
 			//ball moving forward || ball X = 0 || (ball moves backwards && AI is NOT at keeper_Pos or further)
 			if ((ball.GetVelocity().x < 0) || (ball.GetVelocity().x == 0) || (ball.GetVelocity().x > 0) && (AI_x < keeper_Pos))
@@ -173,13 +199,13 @@ void Opponent::Move(Ball& ball)
 			else velocity = { 0,velocity.y }; //Wait
 		}
 	}
+	//*/
 
-
-	//JUMP BALL
-	else if ((ball.GetPosition().y >= high_Ball) && (ball.GetPosition().y <= low_Ball))
+	//*
+	else if (IsJumpHeight())
 	{
 		//Ball in front of AI
-		if (ball.GetPosition().x < AI_x)
+		if (InFront())
 		{
 			//Ball moving forward
 			if (ball.GetVelocity().x < 0)
@@ -262,18 +288,18 @@ void Opponent::Move(Ball& ball)
 		}
 
 		//If behind AI:
-		if (ball.GetPosition().x > AI_x)
+		if (!InFront())
 		{
 			velocity = { velocity_X,velocity.y }; //Move right
 		}
 	}
+	//*/
 
-
-	//LOW BALL
-	else if (ball.GetPosition().y >= low_Ball)
+	//*
+	else if (IsLow())
 	{
 		//Ball in front of AI
-		if (ball.GetPosition().x < AI_x)
+		if (InFront())
 		{
 			//Ball moving forward
 			if (ball.GetVelocity().x < 0)
@@ -315,7 +341,7 @@ void Opponent::Move(Ball& ball)
 		}
 
 		//If behind AI:
-		if (ball.GetPosition().x > AI_x)
+		if (!InFront())
 		{
 			//Ball moving forward
 			if (ball.GetVelocity().x < 0)
@@ -375,4 +401,45 @@ void Opponent::Move(Ball& ball)
 			}
 		}
 	}
+	//*/
+}
+
+const bool Opponent::IsHigh() const
+{
+	//HIGH BALL
+	if (ball.GetPosition().y < high_Ball)
+	{
+		return true;
+	}
+	else return false;
+}
+
+const bool Opponent::IsJumpHeight() const
+{	
+	//JUMP BALL
+	if ((ball.GetPosition().y > high_Ball) && (ball.GetPosition().y < low_Ball))
+	{
+		return true;
+	}
+	else return false;
+}
+
+const bool Opponent::IsLow() const
+{
+	//LOW BALL
+	if (ball.GetPosition().y > low_Ball)
+	{
+		return true;
+	}
+	else return false;
+}
+
+const bool Opponent::InFront() const
+{
+	//Ball in front of AI
+	if (ball.GetPosition().x < rectangle.bottomCenter.x)
+	{
+		return true;
+	}
+	return false;
 }
