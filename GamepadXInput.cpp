@@ -1,7 +1,5 @@
-/// <summary>
-/// XInput implementation. Based on DirectXTK12.
-/// See: https://github.com/microsoft/DirectXTK12
-/// </summary>
+///Code from Jeremiah van Oosten, 03/01/2023
+///https://github.com/jpvanoosten/SoftwareRasterizer/blob/main/graphics/src/Win32/GamepadXInput.cpp
 
 #include "IncludeWin32.hpp"
 

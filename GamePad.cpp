@@ -1,3 +1,6 @@
+///Code from Jeremiah van Oosten, 03/01/2023
+///https://github.com/jpvanoosten/SoftwareRasterizer/blob/main/graphics/src/GamePad.cpp
+
 #include "GamePad.hpp"
 
 #include <algorithm>

@@ -39,6 +39,30 @@ namespace Tmpl8 {
 		return static_cast<Pixel>(red + green + blue);
 	}
 
+	/// Code from HyTap (3dgep.com Discord), 02/27/2023
+	/// https://discord.com/channels/515453022097244160/913396868002762792/1079885233408716850
+	/// 
+	/// Code for blending colors with an alpha value.
+	inline Pixel AlphaBlend(Pixel dest, Pixel src, float alpha)
+	{
+		const unsigned int r1 = (dest & RedMask);
+		const unsigned int g1 = (dest & GreenMask);
+		const unsigned int b1 = (dest & BlueMask);
+
+		const unsigned int r2 = (src & RedMask);
+		const unsigned int g2 = (src & GreenMask);
+		const unsigned int b2 = (src & BlueMask);
+
+		const unsigned int r = alpha * r2 + (1.0f - alpha) * r1;
+		const unsigned int g = alpha * g2 + (1.0f - alpha) * g1;
+		const unsigned int b = alpha * b2 + (1.0f - alpha) * b1;
+
+		const unsigned r3 = (r & RedMask) | (RedMask * (r >> 24));
+		const unsigned g3 = (g & GreenMask) | (GreenMask * (g >> 16));
+		const unsigned b3 = (b & BlueMask) | (BlueMask * (b >> 8));
+		return (r3 + g3 + b3);
+	}
+
 	class Surface
 	{
 		enum { OWNER = 1 };

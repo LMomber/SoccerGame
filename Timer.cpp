@@ -1,5 +1,8 @@
 #include "Timer.hpp"
 
+///Code from Jeremiah van Oosten, 03/01/2023
+///https://github.com/jpvanoosten/SoftwareRasterizer/blob/main/graphics/inc/Graphics/Timer.hpp
+
 #include <thread>
 
 using namespace Graphics;

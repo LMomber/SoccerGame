@@ -1,5 +1,8 @@
 #pragma once
 
+///Code from Jeremiah van Oosten, 03/01/2023
+///https://github.com/jpvanoosten/SoftwareRasterizer/blob/main/graphics/inc/Graphics/GamePad.hpp
+
 #include "GamePadState.hpp"
 
 namespace Graphics

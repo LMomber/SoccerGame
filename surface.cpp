@@ -119,6 +119,10 @@ namespace Tmpl8 {
 		Print(a_String, x, y1, color);
 	}
 
+	/// Code from Boyko (3dgep.com Discord) 02/27/2023
+	/// https://discord.com/channels/515453022097244160/686661689894240277/943970778246967367
+	///
+	/// The code adds a width parameter to the original print function.
 	void Surface::Print(const char* a_String, int x1, int y1, Pixel color, int width)
 	{
 		if (!fontInitialized)
