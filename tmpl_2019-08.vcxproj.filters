@@ -1,117 +1,123 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="game.cpp" />
-    <ClCompile Include="surface.cpp">
-      <Filter>template code</Filter>
-    </ClCompile>
-    <ClCompile Include="template.cpp">
-      <Filter>template code</Filter>
-    </ClCompile>
-    <ClCompile Include="Goal.cpp" />
-    <ClCompile Include="GamepadXInput.cpp">
-      <Filter>controller code</Filter>
-    </ClCompile>
-    <ClCompile Include="GamePad.cpp">
-      <Filter>controller code</Filter>
-    </ClCompile>
-    <ClCompile Include="Timer.cpp">
-      <Filter>controller code</Filter>
-    </ClCompile>
-    <ClCompile Include="Rectangle.cpp">
-      <Filter>shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="Circle.cpp">
-      <Filter>shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="Moving_Entity.cpp">
-      <Filter>moving entities</Filter>
-    </ClCompile>
-    <ClCompile Include="Character.cpp">
-      <Filter>moving entities\characters</Filter>
-    </ClCompile>
-    <ClCompile Include="Opponent.cpp">
-      <Filter>moving entities\characters</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>moving entities\characters</Filter>
-    </ClCompile>
-    <ClCompile Include="Ball.cpp">
-      <Filter>moving entities\ball</Filter>
-    </ClCompile>
-    <ClCompile Include="Controller.cpp">
-      <Filter>controller code</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="game.h" />
-    <ClInclude Include="surface.h">
-      <Filter>template code</Filter>
-    </ClInclude>
-    <ClInclude Include="template.h">
-      <Filter>template code</Filter>
-    </ClInclude>
-    <ClInclude Include="Goal.h" />
-    <ClInclude Include="GamePadState.hpp">
-      <Filter>controller code</Filter>
-    </ClInclude>
-    <ClInclude Include="GamePad.hpp">
-      <Filter>controller code</Filter>
-    </ClInclude>
-    <ClInclude Include="IncludeWin32.hpp">
-      <Filter>controller code</Filter>
-    </ClInclude>
-    <ClInclude Include="Timer.hpp">
-      <Filter>controller code</Filter>
-    </ClInclude>
-    <ClInclude Include="Rectangle.h">
-      <Filter>shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="Circle.h">
-      <Filter>shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="Moving_Entity.h">
-      <Filter>moving entities</Filter>
-    </ClInclude>
-    <ClInclude Include="Character.h">
-      <Filter>moving entities\characters</Filter>
-    </ClInclude>
-    <ClInclude Include="Opponent.h">
-      <Filter>moving entities\characters</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>moving entities\characters</Filter>
-    </ClInclude>
-    <ClInclude Include="Ball.h">
-      <Filter>moving entities\ball</Filter>
-    </ClInclude>
-    <ClInclude Include="Controller.h">
-      <Filter>controller code</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="template code">
-      <UniqueIdentifier>{bf32dd6e-4be7-4889-8ac6-49e7ee163c40}</UniqueIdentifier>
+    <Filter Include="inc">
+      <UniqueIdentifier>{c2920dc8-2c02-4e93-a505-4ee9fb765bd3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="controller code">
-      <UniqueIdentifier>{f474fdf0-6f50-420d-a518-cecae00bb8d0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="shapes">
-      <UniqueIdentifier>{2a4473fd-7bdc-4b6a-860e-0e02d15ee2eb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="moving entities">
-      <UniqueIdentifier>{46361ec9-2a66-4e74-94f2-109f2d5f0b21}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="moving entities\characters">
-      <UniqueIdentifier>{4dfdeec0-7c51-4f4a-9bc8-a1a2a421d2f0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="moving entities\ball">
-      <UniqueIdentifier>{65aacc7f-107e-4c7a-8e19-f3e2e26b9546}</UniqueIdentifier>
+    <Filter Include="src">
+      <UniqueIdentifier>{557e2820-8062-497e-96f4-92221a009908}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="_readme.txt">
-      <Filter>template code</Filter>
-    </Text>
+    <ClInclude Include="code\inc\AI.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="code\inc\AudioManager.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="code\inc\AudioPlayer.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="code\inc\Ball.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="code\inc\Button.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="code\inc\Character.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="code\inc\Circle.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="code\inc\Controller.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="code\inc\game.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="code\inc\GamePad.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="code\inc\GamePadState.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="code\inc\Goal.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="code\inc\IncludeWin32.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="code\inc\MovingEntity.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="code\inc\Player.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="code\inc\Rectangle.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="code\inc\surface.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="code\inc\template.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="code\inc\Timer.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="code\src\AI.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="code\src\AudioManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="code\src\AudioPlayer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="code\src\Ball.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="code\src\Button.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="code\src\Character.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="code\src\Circle.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="code\src\Controller.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="code\src\game.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="code\src\GamePad.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="code\src\GamepadXInput.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="code\src\Goal.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="code\src\MovingEntity.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="code\src\Player.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="code\src\surface.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="code\src\template.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="code\src\Timer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -18,6 +18,46 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="code\inc\AI.h" />
+    <ClInclude Include="code\inc\AudioManager.h" />
+    <ClInclude Include="code\inc\AudioPlayer.h" />
+    <ClInclude Include="code\inc\Ball.h" />
+    <ClInclude Include="code\inc\Button.h" />
+    <ClInclude Include="code\inc\Character.h" />
+    <ClInclude Include="code\inc\Circle.h" />
+    <ClInclude Include="code\inc\Controller.h" />
+    <ClInclude Include="code\inc\game.h" />
+    <ClInclude Include="code\inc\GamePad.hpp" />
+    <ClInclude Include="code\inc\GamePadState.hpp" />
+    <ClInclude Include="code\inc\Goal.h" />
+    <ClInclude Include="code\inc\IncludeWin32.hpp" />
+    <ClInclude Include="code\inc\MovingEntity.h" />
+    <ClInclude Include="code\inc\Player.h" />
+    <ClInclude Include="code\inc\Rectangle.h" />
+    <ClInclude Include="code\inc\surface.h" />
+    <ClInclude Include="code\inc\template.h" />
+    <ClInclude Include="code\inc\Timer.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="code\src\AI.cpp" />
+    <ClCompile Include="code\src\AudioManager.cpp" />
+    <ClCompile Include="code\src\AudioPlayer.cpp" />
+    <ClCompile Include="code\src\Ball.cpp" />
+    <ClCompile Include="code\src\Button.cpp" />
+    <ClCompile Include="code\src\Character.cpp" />
+    <ClCompile Include="code\src\Circle.cpp" />
+    <ClCompile Include="code\src\Controller.cpp" />
+    <ClCompile Include="code\src\game.cpp" />
+    <ClCompile Include="code\src\GamePad.cpp" />
+    <ClCompile Include="code\src\GamepadXInput.cpp" />
+    <ClCompile Include="code\src\Goal.cpp" />
+    <ClCompile Include="code\src\MovingEntity.cpp" />
+    <ClCompile Include="code\src\Player.cpp" />
+    <ClCompile Include="code\src\surface.cpp" />
+    <ClCompile Include="code\src\template.cpp" />
+    <ClCompile Include="code\src\Timer.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D8FE2186-4BF0-4B89-913F-6C26818E5AC5}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -124,7 +164,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>lib;lib\OpenGL;lib\SDL2-2.0.3\include;lib\freeimage\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>code\inc;lib\OpenGL;lib\SDL2-2.0.3\include;lib\freeimage\inc;lib\SDL2_mixer-2.6.3\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -139,9 +179,9 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>winmm.lib;advapi32.lib;user32.lib;sdl2.lib;sdl2main.lib;opengl32.lib;freeimage.lib</AdditionalDependencies>
+      <AdditionalDependencies>winmm.lib;advapi32.lib;user32.lib;sdl2.lib;sdl2main.lib;sdl2_mixer.lib;opengl32.lib;freeimage.lib;shell32.lib</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
-      <AdditionalLibraryDirectories>lib\SDL2-2.0.3\lib\x64;lib\freeimage\lib64</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>lib\SDL2-2.0.3\lib\x64;lib\freeimage\lib64;lib\SDL2_mixer-2.6.3\lib\x64</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>msvcrt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -194,7 +234,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>lib;lib\OpenGL;lib\SDL2-2.0.3\include;lib\freeimage\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>code\inc;lib\OpenGL;lib\SDL2-2.0.3\include;lib\freeimage\inc;lib\SDL2_mixer-2.6.3\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN64;NDEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -206,11 +246,12 @@
       </BrowseInformation>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>winmm.lib;advapi32.lib;user32.lib;sdl2.lib;sdl2main.lib;opengl32.lib;freeimage.lib</AdditionalDependencies>
+      <AdditionalDependencies>winmm.lib;advapi32.lib;user32.lib;sdl2.lib;sdl2main.lib;sdl2_mixer.lib;opengl32.lib;freeimage.lib;shell32.lib</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
-      <AdditionalLibraryDirectories>lib\SDL2-2.0.3\lib\x64;lib\freeimage\lib64</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>lib\SDL2-2.0.3\lib\x64;lib\freeimage\lib64;lib\SDL2_mixer-2.6.3\lib\x64</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>LIBCMT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -223,44 +264,6 @@
       </DataExecutionPrevention>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Ball.cpp" />
-    <ClCompile Include="Character.cpp" />
-    <ClCompile Include="Circle.cpp" />
-    <ClCompile Include="Controller.cpp" />
-    <ClCompile Include="game.cpp" />
-    <ClCompile Include="GamePad.cpp" />
-    <ClCompile Include="GamepadXInput.cpp" />
-    <ClCompile Include="Goal.cpp" />
-    <ClCompile Include="Moving_Entity.cpp" />
-    <ClCompile Include="Opponent.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Rectangle.cpp" />
-    <ClCompile Include="surface.cpp" />
-    <ClCompile Include="template.cpp" />
-    <ClCompile Include="Timer.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Ball.h" />
-    <ClInclude Include="Character.h" />
-    <ClInclude Include="Circle.h" />
-    <ClInclude Include="Controller.h" />
-    <ClInclude Include="game.h" />
-    <ClInclude Include="GamePad.hpp" />
-    <ClInclude Include="GamePadState.hpp" />
-    <ClInclude Include="Goal.h" />
-    <ClInclude Include="IncludeWin32.hpp" />
-    <ClInclude Include="Moving_Entity.h" />
-    <ClInclude Include="Opponent.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Rectangle.h" />
-    <ClInclude Include="surface.h" />
-    <ClInclude Include="template.h" />
-    <ClInclude Include="Timer.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="_readme.txt" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

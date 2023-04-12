@@ -5,6 +5,7 @@
                             name="dlls_x64"
                             version="1.0.0.0"
             />
+	<file name="SDL2_mixer.dll"/>
     <file name="FreeImage.dll"/>
 	<file name="glew32.dll"/>
 	<file name="SDL2.dll"/>
