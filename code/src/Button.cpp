@@ -31,15 +31,15 @@ void Button::Draw(Tmpl8::Surface* screen, const bool border)
 	//If the mouse is on the button, as an indicator, draw an extra border around the button
 	if (MouseOnButton())
 	{
-		screen->Line(x1 - 1, y1, x1 - 1, y2, borderColor);
-		screen->Line(x1, y1 - 1, x2, y1 - 1, borderColor);
-		screen->Line(x1, y2 + 1, x2, y2 + 1, borderColor);
-		screen->Line(x2 + 1, y1, x2 + 1, y2, borderColor);
+		screen->Line(x1 - 1.0f, y1, x1 - 1.0f, y2, borderColor);
+		screen->Line(x1, y1 - 1.0f, x2, y1 - 1.0f, borderColor);
+		screen->Line(x1, y2 + 1.0f, x2, y2 + 1.0f, borderColor);
+		screen->Line(x2 + 1.0f, y1, x2 + 1.0f, y2, borderColor);
 
 		//If the mouse is pressed, as an indicator, make the whole button white
 		if (mousePressed)
 		{
-			for (int y = y2 + 1; y < y1; y++)
+			for (float y = y2 + 1.0f; y < y1; y++)
 			{
 				screen->Line(x1, y, x2, y, 0xdddddd);
 			}
@@ -47,7 +47,7 @@ void Button::Draw(Tmpl8::Surface* screen, const bool border)
 	}
 
 	//Print the button label in the middle of the button
-	screen->Print(label, middle.x - (textWidth * strlen(label) * 3), middle.y - textWidth * 2, textColor, textWidth);
+	screen->Print(label, static_cast<int>(middle.x - (textWidth * strlen(label) * 3)), static_cast<int>(middle.y) - textWidth * 2, textColor, textWidth);
 }
 
 //Start, reset, settings & back-buttons. The start-case is used for the start & reset buttons.

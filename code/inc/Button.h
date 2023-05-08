@@ -74,12 +74,12 @@ private:
 	int& mousePressed;
 
 	//(x1, y1) is the bottomleft corner
-	const int x1 = static_cast<int>(rectangle.pos.x);
-	const int y1 = static_cast<int>(rectangle.pos.y);
+	const float x1 = rectangle.pos.x;
+	const float y1 = rectangle.pos.y;
 
 	//(x2, y2) is the topright corner
-	const int x2 = static_cast<int>(rectangle.pos.x + rectangle.width);
-	const int y2 = static_cast<int>(rectangle.pos.y - rectangle.height);
+	const float x2 = rectangle.pos.x + rectangle.width;
+	const float y2 = rectangle.pos.y - rectangle.height;
 
 	AudioManager audioManager = AudioManager::getInstance();
 };
