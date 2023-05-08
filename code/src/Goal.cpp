@@ -128,4 +128,6 @@ bool Goal::IsGoal(const Ball& ball)
 		}
 		else return false;
 	}
+
+	return false;
 }
