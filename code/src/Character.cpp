@@ -74,7 +74,7 @@ void Character::Frames(const float deltaTime, Tmpl8::Sprite& sprite)
 	sprite.SetFrame(frame);
 }
 
-const Tmpl8::vec2 Character::GetPosition() const
+const Tmpl8::vec2& Character::GetPosition() const
 {
 	return rectangle.pos;
 }

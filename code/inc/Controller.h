@@ -20,13 +20,13 @@ public:
 
 	const bool GetButtonA() const;
 
-	void SetVibration(signed int vibration);
+	void SetVibration(float vibration);
 
 	bool IsConnected();
 
 private:
 	Graphics::GamePadState state;
-	unsigned int vibration{ 0 };
+	float vibration{ 0 };
 
 	//Player = which player the controller belongs to: P1 or P2.
 	int player;

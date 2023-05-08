@@ -38,7 +38,7 @@ public:
 	//Sets the sprite frame, depending on the velocity and position of the character
 	void Frames(const float deltaTime, Tmpl8::Sprite& sprite);
 
-	const Tmpl8::vec2 GetPosition() const;
+	const Tmpl8::vec2& GetPosition() const;
 	void SetPosition(const Tmpl8::vec2 pos);
 
 	const int GetScore() const;

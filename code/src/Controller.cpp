@@ -26,7 +26,7 @@ const bool Controller::GetButtonA() const
     else return false;
 }
 
-void Controller::SetVibration(signed int vibration)
+void Controller::SetVibration(float vibration)
 {
     this->vibration = vibration;
 }
